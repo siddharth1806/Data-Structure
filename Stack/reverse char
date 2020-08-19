@@ -1,0 +1,78 @@
+import java.util.*;
+import java.io.*;
+class Stackx{
+    private int top;
+    private char arr[];
+    private int maxSize;
+    public Stackx(int max)
+    {
+        top=-1;
+        maxSize=max;
+        arr=new char[maxSize];
+    }
+    public void push(char i)
+    {
+        arr[++top]=i;
+    }
+    public char pop(){
+        return arr[top--];
+    }
+    public char peek()
+    {
+        return arr[top];
+    }
+    public boolean isEmpty()
+    {
+        return (top==-1);
+        /*if(top==-1)
+        {
+            return True;
+        }
+        else{
+            return False;
+        }*/
+    }
+}
+class ReverseApp{
+    private String input;
+    private String output;
+    public ReverseApp(String in)
+    {
+        input=in;
+    }
+    public String rev(){
+        int Stacksize=input.length();
+        Stackx obj=new Stackx(Stacksize);
+        for(int k=0;k<input.length();k++)
+        {
+            char ch=input.charAt(k);
+            obj.push(ch);
+        }
+        output="";
+        while(!obj.isEmpty())
+        {
+            char ch=obj.pop();
+            output+=ch;
+        }
+        return output;
+    }
+    
+}
+class Rever{
+    public static void main(String args[]) throws IOException{
+        String input,output;
+        while(true)
+        {
+            InputStreamReader isr=new InputStreamReader(System.in);
+            BufferedReader br=new BufferedReader(isr);
+            input=br.readLine();
+            if(input.equals(""))
+                break;
+            ReverseApp obj1=new ReverseApp(input);
+            output=obj1.rev();
+            System.out.println(output);
+        }
+        
+        
+    }
+}
