@@ -1,0 +1,62 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner scan = new Scanner(System.in);
+        int N = Integer.parseInt(scan.nextLine());
+        while(scan.hasNextLine()){
+            String line = scan.nextLine();
+            boolean bal = balanced(line);
+            String result;
+            if(bal)
+                result = "YES";
+            else
+                result = "NO";
+            System.out.println(result);
+        }
+        
+        return ;
+    }
+    
+    public static boolean balanced(String str){
+        if(str==null||str.length()==0)
+            return true;
+        Stack<Character> stack = new Stack<Character>();
+        boolean balance = false;
+        for(int i=0;i<str.length();i++){
+            char c = str.charAt(i);
+            switch(c){
+                case('('):
+                    stack.push('(');
+                    break;
+                case('['):
+                    stack.push('[');
+                    break;
+                case('{'):
+                    stack.push('{');
+                    break;
+                case(')'):
+                    if(stack.isEmpty()||stack.peek()!='(')
+                        return false;
+                    stack.pop();
+                    break;
+                case(']'):
+                    if(stack.isEmpty()||stack.peek()!='[')
+                        return false;
+                    stack.pop();
+                    break;
+                case('}'):
+                    if(stack.isEmpty()|| stack.peek()!='{')
+                        return false;
+                    stack.pop();
+                    break;
+            }
+        }
+        if(stack.isEmpty())
+            balance = true;
+        return balance;
+    }
+}
