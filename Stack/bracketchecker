@@ -63,12 +63,13 @@ class BracketApp{
                         {
                             System.out.println("Error: "+ch+" "+k);
                         }
-                        else
+                    }
+                    else
                         {
                                System.out.println("Error: "+ch+" "+k);
                             
                         }
-                    }
+                    
                     break;
                 default:
                     break;
