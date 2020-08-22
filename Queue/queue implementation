@@ -1,0 +1,72 @@
+/* package codechef; // don't place package name! */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class Queue{
+    private int maxsize,front,rear,items;
+    private long[] arr;
+    public Queue(int s)
+    {
+        maxsize=s;
+        rear=-1;
+        front=0;
+        items=0;
+        arr=new long[maxsize];
+    }
+    public void insert(long j){
+        if(rear==maxsize-1)
+        {
+            rear=-1;
+        }
+        arr[++rear]=j;
+        items++;
+        
+    }
+    public long remove(){
+        long temp=arr[front++];
+        if(front==maxsize)
+            front=0;
+        items--;
+        return temp;
+    }
+    public long peekf()
+    {
+        return arr[front];
+    }
+    public boolean isEmpty()
+    {
+        return (items==0);
+        
+    }
+    public boolean isFull()
+    {
+        return (items==maxsize);
+    }
+}
+class QueueApp
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{   
+	    Scanner sc=new Scanner(System.in);
+	    int n=sc.nextInt();
+	    
+	    Queue thequeue=new Queue(n);
+	    for(int i=0;i<n;i++)
+	    {
+	        thequeue.insert(sc.nextLong());
+	        
+	    }
+	    thequeue.remove();
+	    while(!thequeue.isEmpty())
+	    {
+	        long m=thequeue.remove();
+	        System.out.println(m);
+	        
+	    }
+	    System.out.println("");
+		// your code goes here
+	}
+}
