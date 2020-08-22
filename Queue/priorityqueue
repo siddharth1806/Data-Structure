@@ -1,0 +1,80 @@
+/* package codechef; // don't place package name! */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class PriorityQueue{
+    private int maxsize,nitems;
+    private long[] arr;
+    public PriorityQueue(int s)
+    {
+        maxsize=s;
+        
+        nitems=0;
+        arr=new long[maxsize];
+    }
+    public void insert(long item)
+    {
+        int i;
+        if(nitems==0)
+        {
+            arr[nitems++]=item;
+        }
+        else{
+            for(i=nitems-1;i>=0;i--)
+            {
+                if(item>arr[i])
+                {
+                    arr[i+1]=arr[i];
+                }
+                else{
+                    break;
+                }
+                arr[i+1]=item;
+                nitems++;
+                
+            }
+        }
+    }
+    public long remove(){
+        return arr[--nitems];
+    }
+    public long peekmin()
+    {
+        return arr[nitems-1];
+    }
+    public boolean isEmpty()
+    {
+        return (nitems==0);
+        
+    }
+    public boolean isFull()
+    {
+        return (nitems==maxsize);
+    }
+}
+class QueueApp
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{   
+	    
+	    
+	    PriorityQueue thequeue=new PriorityQueue(5);
+	    thequeue.insert(30);
+	    thequeue.insert(50);
+	    thequeue.insert(10);
+	    thequeue.insert(40);
+	    thequeue.insert(20);
+	    
+	    while(!thequeue.isEmpty())
+	    {
+	        long m=thequeue.remove();
+	        System.out.print(m+" ");
+	        
+	    }
+	    System.out.println("");
+		// your code goes here
+	}
+}
