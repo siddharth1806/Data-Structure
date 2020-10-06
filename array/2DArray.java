@@ -7,7 +7,7 @@ class 2DArray{
         int arr[][]=new int[6][6];
         for(int i=0;i<6;i++)
         {
-            for(int j=0;j<6;j++)
+           for(int j=0;j<6;j++)
             {
                 arr[i][j]=sc.nextInt(); 
             }
